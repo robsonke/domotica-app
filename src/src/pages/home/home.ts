@@ -7,8 +7,14 @@ import * as optional from 'optional';
 const electron = optional("electron");
 
 //declare const electron
-//declare const path
 
+/**
+ * Default dashboard view
+ * 
+ * @param  {'page-home'}  {selector   [description]
+ * @param  {'home.html'}} templateUrl [description]
+ * @return {[type]}                   [description]
+ */
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,12 +23,9 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     
-    
-    console.log(electron);
     if(electron) {
-       console.log('Electron is now available: ', electron);
-    //   console.log('Electron remote is now available: ', electron.remote);
-    //   console.log('Path is now available: ', path);
+      console.log('Electron is now available: ', electron);
+      console.log('Electron remote is now available: ', electron.remote);
     }
   }
 

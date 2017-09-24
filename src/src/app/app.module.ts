@@ -7,16 +7,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { DomoticaApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { LightPage } from '../pages/light/light';
+import { SoundPage } from '../pages/sound/sound';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
     DomoticaApp,
-    AboutPage,
-    ContactPage,
+    LightPage,
+    SoundPage,
     HomePage,
     TabsPage
   ],
@@ -27,7 +27,7 @@ import { TabsPage } from '../pages/tabs/tabs';
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
         { component: HomePage, name: 'HomePage', segment: 'home-page' },
-        { component: ContactPage, name: 'ContactPage', segment: 'contact-page' }
+        { component: SoundPage, name: 'SoundPage', segment: 'sound-page' }
       ]
     }),
     IonicStorageModule.forRoot()
@@ -35,8 +35,8 @@ import { TabsPage } from '../pages/tabs/tabs';
   bootstrap: [IonicApp],
   entryComponents: [
     DomoticaApp,
-    AboutPage,
-    ContactPage,
+    LightPage,
+    SoundPage,
     HomePage,
     TabsPage
   ],
