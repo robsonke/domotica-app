@@ -1,6 +1,10 @@
 {
-  "name": "app",
-  "app_id": "",
+  "name": "domotica-app",
+  "app_id": "035f0dbe",
   "type": "ionic-angular",
-  "watchPatterns": []
+  "watchPatterns": [],
+  "integrations": {
+    "cordova": {},
+    "gulp": {}
+  }
 }

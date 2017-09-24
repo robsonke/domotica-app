@@ -1,14 +1,13 @@
 {
-  "name": "polyonic",
-  "productName": "A Polyonic App",
-  "description": "A Polyonic Electron Ionic 2 starter application",
-  "version": "1.0.0",
-  "author": "Author",
-  "copyright": "© 2016, Author",
+  "name": "domotica-app",
+  "version": "0.1.0",
+  "author": "Rob Sonke",
+  "homepage": "http://www.tigrou.nl",
+  "description": "A custom made app to control home domotica. Based on this quick starter: https://github.com/paulsutherland/Polyonic",
   "main": "src/app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/paulsutherland/Polyonic"
+    "url": "https://github.com/robsonke/domotica-app"
   },
   "license": "MIT",
   "devDependencies": {
@@ -64,7 +63,5 @@
     "directories": {
       "app": "build"
     }
-  },
-  "dependencies": {
   }
 }
