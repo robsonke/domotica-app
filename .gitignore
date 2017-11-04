@@ -13,3 +13,4 @@ Thumbs.db
 /src/plugins
 /src/www/build/
 /src/.tmp/
+app.config.ts

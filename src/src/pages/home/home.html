@@ -1,24 +1,61 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateOverview()">
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="lights">
+        Lights
+      </ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+</ion-header>
 
-<ion-content padding>
+<ion-content>
+
   <ion-grid>
     <ion-row>
       <ion-col>
-        1 of 2
+        <div class="tile">
+          {{(data|async|deviceFilter:115).Status}}
+
+          <device [device]=(data|async|deviceFilter:115)></device>
+        </div>
+
       </ion-col>
       <ion-col>
-        2 of 2
+        <div class="tile">
+          <!-- lamp stoel -->
+          {{(data|async|deviceFilter:11).Status}}
+          <device [devicesOb]="data" [idx]="11" [device]=(data|async|deviceFilter:11)></device>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        1 of 3
+        <div class="tile">
+            {{(data|async|deviceFilter:74).Status}}
+            <device [device]=(data|async|deviceFilter:74)></device>
+        </div>
       </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col>
-        2 of 3
+        <div class="tile">
+          Music
+        </div>
       </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col>
-        3 of 3
+        <div class="tile">
+          Weer
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
+
 </ion-content>

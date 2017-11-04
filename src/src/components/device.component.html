@@ -1,0 +1,10 @@
+<div [class]="getStateClass()">
+  <h2>name: {{device.Name}}</h2>
+  <p>idx: {{device.idx}}</p>
+  <p>switch type: {{device.SwitchType}}</p>
+  <p>data: {{device.Data}}</p>
+  <p>type: {{device.Type}}</p>
+  <p>status: {{device.Status}}</p>
+  <p>level: {{device.Level}}</p>
+  <button ion-button color="light" outline ng-click="changeState()">{{device.Status}}</button>
+</div>

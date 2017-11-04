@@ -9,14 +9,15 @@ import { TabsPage } from '../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class DomoticaApp {
+  // the tabspage is the default one
   rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       splashScreen.hide();
-      statusBar.styleBlackOpaque();
-      statusBar.hide();
-      statusBar.overlaysWebView(false);
+      statusBar.overlaysWebView(true);
+      //statusBar.styleDefault();
+      statusBar.styleBlackTranslucent();
     });
   }
 }

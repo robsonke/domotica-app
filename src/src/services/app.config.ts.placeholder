@@ -1,0 +1,8 @@
+// rename this to app.config.ts and change the values
+export let CONFIG = {
+  home_api_address: "192.168.0.0",
+  home_api_port: "1",
+  domoticz_mqtt_port: "2",
+  domoticz_user: "name",
+  domoticz_password: "pass"
+};
