@@ -1,18 +1,21 @@
-import { Observable } from 'rxjs/RX';
+import { DomoticzService } from './../services/domoticz-service';
 import { Device } from './../domain/device.domain';
 import { Component, Input } from '@angular/core';
 
 
 @Component({
+  providers: [ DomoticzService ],
   selector: 'device',
   templateUrl: 'device.component.html'
 })
 export class DeviceComponent {
   @Input() device: Device;
-  @Input() devicesOb: Observable<Array<Device>>;
-  @Input() idx: string;
 
-  private getStateClass():string {
+  constructor(private domoticzService:DomoticzService) {
+
+  }
+
+  public getStateClass():string {
     // a normal non dimming switch
     if(this.device.SwitchType === "On/Off") {
       if(this.device.Data === "On")
@@ -25,6 +28,15 @@ export class DeviceComponent {
       return "dimmer-off";
     }
     return "default-state";
+  }
+
+  public changeState():void {
+    if(this.device.Status === 'On') {
+      this.domoticzService.setLightSwitch(Number(this.device.idx), 'off');
+    }
+    else if(this.device.Status === 'Off') {
+      this.domoticzService.setLightSwitch(Number(this.device.idx), 'on');
+    }
   }
 
 }

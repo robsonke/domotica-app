@@ -3,14 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-segment [(ngModel)]="segment" (ionChange)="updateOverview()">
+    <!-- <ion-segment [(ngModel)]="segment" (ionChange)="updateOverview()">
       <ion-segment-button value="all">
         All
       </ion-segment-button>
       <ion-segment-button value="lights">
         Lights
       </ion-segment-button>
-    </ion-segment>
+    </ion-segment> -->
+    <ion-buttons right>
+      <button ion-button (click)="refreshDevices()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -20,25 +25,34 @@
     <ion-row>
       <ion-col>
         <div class="tile">
-          {{(data|async|deviceFilter:115).Status}}
-
           <device [device]=(data|async|deviceFilter:115)></device>
         </div>
-
       </ion-col>
       <ion-col>
         <div class="tile">
           <!-- lamp stoel -->
-          {{(data|async|deviceFilter:11).Status}}
-          <device [devicesOb]="data" [idx]="11" [device]=(data|async|deviceFilter:11)></device>
+          <device [device]=(data|async|deviceFilter:128)></device>
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
+        <ion-col>
+          <div class="tile">
+            <!-- automatische lampen switch -->
+            <device [device]=(data|async|deviceFilter:53)></device>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="tile">
+            <!-- lamp stoel -->
+            <device [device]=(data|async|deviceFilter:111)></device>
+          </div>
+        </ion-col>
+      </ion-row>
+    <ion-row>
       <ion-col>
         <div class="tile">
-            {{(data|async|deviceFilter:74).Status}}
-            <device [device]=(data|async|deviceFilter:74)></device>
+          <device [device]=(data|async|deviceFilter:11)></device>
         </div>
       </ion-col>
     </ion-row>

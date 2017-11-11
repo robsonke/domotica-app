@@ -7,7 +7,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from "@angular/http";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { MqttModule, MqttService } from 'ngx-mqtt';
+import { MqttModule, MqttService, MqttServiceOptions } from 'ngx-mqtt';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DomoticaApp } from './app.component';
@@ -16,10 +16,15 @@ import { SoundPage } from '../pages/sound/sound';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
-export const MQTT_SERVICE_OPTIONS = {
-  hostname: '192.168.0.110',
-  port: 9001,
-  path: '/'
+import { CONFIG } from '../services/app.config';
+
+export const MQTT_SERVICE_OPTIONS: MqttServiceOptions = {
+  hostname: CONFIG.domoticz_mqtt_address,
+  port: CONFIG.domoticz_mqtt_port,
+  path: '/',
+  protocol:"wss",
+  username: CONFIG.domoticz_mqtt_user,
+  password: CONFIG.domoticz_mqtt_pass
 };
 
 export function mqttServiceFactory() {

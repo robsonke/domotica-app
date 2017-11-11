@@ -23,7 +23,7 @@ export class DomoticzMqttService {
 
   constructor(private mqttService: MqttService, private domoticzService: DomoticzService) {
     // populate with initial data from the rest api of the home-api
-    this.domoticzService.getDevices().subscribe(data => this.allDevices = data);
+    this.refreshInitialData();
 
     // listen to the out topic for changes in devices, this is the enriched one by node-red
     let self = this;
@@ -42,6 +42,13 @@ export class DomoticzMqttService {
         },
         error => console.log("Error subscribing to DataService: " + error)
       );
+  }
+
+  public refreshInitialData(): void {
+    this.domoticzService.getDevices().subscribe(data => {
+      this.allDevices = data;
+      this.allDevicesSubject.next(data.map(x => Object.assign({}, x)));
+    });
   }
 
   private replaceCachedDevice(updatedDevice:Device) {

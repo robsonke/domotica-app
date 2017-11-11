@@ -1,9 +1,9 @@
-import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { DomoticzService } from './../../services/domoticz-service';
+import { Component, OnInit } from '@angular/core';
+import { NavController, Platform } from 'ionic-angular';
 
 import { DomoticzMqttService } from '../../services/domoticz-mqtt.service'
-import { DomoticzService } from '../../services/domoticz-service';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subscription } from 'rxjs/RX';
 
 import * as optional from 'optional';
 
@@ -13,10 +13,6 @@ const electron = optional("electron");
 
 /**
  * Default dashboard view
- *
- * @param  {'page-home'}  {selector   [description]
- * @param  {'home.html'}} templateUrl [description]
- * @return {[type]}                   [description]
  */
 @Component({
   selector: 'page-home',
@@ -26,16 +22,31 @@ const electron = optional("electron");
 export class HomePage implements OnInit {
 
   public data: Observable<Array<any>>;
+  private onResumeSubscription: Subscription;
 
-  constructor(public navCtrl: NavController, private domoticzMqttService: DomoticzMqttService) {
+
+  constructor(public navCtrl: NavController, private platform: Platform, private domoticzMqttService: DomoticzMqttService) {
 
     if(electron) {
       console.log('Electron is now available: ', electron);
       console.log('Electron remote is now available: ', electron.remote);
     }
+
+    this.onResumeSubscription = platform.resume.subscribe(() => {
+      // when you reopen the paused app, fetch the latest data
+      this.domoticzMqttService.refreshInitialData();
+    });
+  }
+
+  refreshDevices(): void {
+    this.domoticzMqttService.refreshInitialData();
   }
 
   ngOnInit() {
     this.data = this.domoticzMqttService.subscribeToMqttService();
+  }
+
+  ngOnDestroy() {
+    this.onResumeSubscription.unsubscribe();
   }
 }
