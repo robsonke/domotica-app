@@ -60,6 +60,7 @@ export interface Device {
   Data: string;
   Description: string;
   Favorite: number;
+  ForecastStr: string;
   HardwareID: number;
   HardwareName: string;
   HardwareType: string;

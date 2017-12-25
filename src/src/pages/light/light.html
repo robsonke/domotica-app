@@ -1,12 +1,86 @@
+
 <ion-header>
-  <ion-navbar>
+  <ion-navbar no-border-bottom>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Light</ion-title>
+    <ion-toolbar>
+      <ion-title>Light</ion-title>
+    </ion-toolbar>
+    <ion-buttons right>
+      <button ion-button (click)="refreshDevices()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  
+  <ion-refresher #$event (ionRefresh)="refreshDevices($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- automatische lampen switch -->
+          <device [device]=(data|async|deviceFilter:53) icon="check_circle"></device>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row><ion-col col-12><h1 text-center>Keuken achterzijde</h1></ion-col></ion-row>
+    <ion-row>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- spots bureau -->
+          <device [device]=(data|async|deviceFilter:153) icon="highlight"></device>
+        </div>
+      </ion-col>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- spots achterdeur -->
+          <device [device]=(data|async|deviceFilter:111) icon="highlight" rotateIcon="180"></device>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row><ion-col col-12><h1 text-center>Zithoek voorzijde</h1></ion-col></ion-row>
+    <ion-row>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- voordeur -->
+          <device [device]=(data|async|deviceFilter:112) icon="home"></device>
+        </div>
+      </ion-col>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- lamb bank -->
+          <device [device]=(data|async|deviceFilter:70) icon="lightbulb_outline" rotateIcon="180"></device>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- dimmer linksvoor -->
+          <device [device]=(data|async|deviceFilter:19) icon="lightbulb_outline"></device>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row><ion-col col-12><h1 text-center>Rest</h1></ion-col></ion-row>
+    <ion-row>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- milight bridge -->
+          <device [device]=(data|async|deviceFilter:115) icon="lightbulb_outline"></device>
+        </div>
+      </ion-col>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- lamp stoel -->
+          <device [device]=(data|async|deviceFilter:128) icon="lightbulb_outline"></device>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

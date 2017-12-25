@@ -1,3 +1,5 @@
+import { NestPipe } from './../pipes/nest.pipe';
+import { SensorComponent } from './../components/sensor.component';
 import { DeviceComponent } from './../components/device.component';
 import { DevicePipe } from './../pipes/device.pipe';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -9,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MqttModule, MqttService, MqttServiceOptions } from 'ngx-mqtt';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialIconsModule } from 'ionic2-material-icons';
 
 import { DomoticaApp } from './app.component';
 import { LightPage } from '../pages/light/light';
@@ -17,6 +20,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { CONFIG } from '../services/app.config';
+import { SpeakerComponent } from '../components/speakers.component';
+import { ClimateComponent } from '../components/climate/climate.component';
 
 export const MQTT_SERVICE_OPTIONS: MqttServiceOptions = {
   hostname: CONFIG.domoticz_mqtt_address,
@@ -39,12 +44,17 @@ export function mqttServiceFactory() {
     HomePage,
     TabsPage,
     DevicePipe,
-    DeviceComponent
+    NestPipe,
+    DeviceComponent,
+    SensorComponent,
+    SpeakerComponent,
+    ClimateComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
+    MaterialIconsModule,
     IonicModule.forRoot(DomoticaApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },

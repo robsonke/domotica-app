@@ -51,6 +51,7 @@
         "ionic-angular": "3.7.1",
         "ionic-native": "2.4.1",
         "ionic-plugin-keyboard": "^2.2.1",
+        "ionic2-material-icons": "^1.0.3",
         "ionicons": "3.0.0",
         "morgan": "1.8.2",
         "ngx-mqtt": "^1.16.0",
@@ -107,5 +108,8 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-wkwebview-engine": {}
         }
+    },
+    "config": {
+        "ionic_copy": "./copy.config.js"
     }
 }

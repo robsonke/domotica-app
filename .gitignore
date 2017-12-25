@@ -14,3 +14,4 @@ Thumbs.db
 /src/www/build/
 /src/.tmp/
 app.config.ts
+src/package-lock.json

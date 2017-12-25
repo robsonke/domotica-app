@@ -1,0 +1,23 @@
+speakers {
+  background-color: $off-color;
+
+  @media screen and (max-height : 700px) {
+    .speaker-icon {
+      font-size: 50px;
+      line-height: 70px;
+    }
+  }
+  @media screen and (min-height : 700px) {
+    .speaker-icon {
+      font-size: 100px;
+    }
+  }
+
+
+}
+// customising the checkboxes
+$checkbox-ios-icon-border-color-on: transparent;
+$checkbox-ios-icon-size: 100px;
+$checkbox-ios-background-color-on: none;
+$checkbox-ios-background-color-off: none;
+$checkbox-ios-icon-checkmark-width:10px;

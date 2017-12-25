@@ -1,0 +1,14 @@
+<div *ngIf="device" id="{{device.idx}}" [class]="getStateClass()">
+  <!-- <div *ngIf="device.SwitchType === 'Dimmer' && isDeviceOn()"><div class="level-bar" [style]="getLevelStyle()"></div></div> -->
+  <div class="device-info">
+    <ion-row align-items-stretch>
+      <ion-col col-2>
+        <ion-icon [ngClass]="{disabled: device.Data === 'Off', rotate180: rotateIcon == 180}" class="device-icon" md-name md-name="{{icon}}" name="{{ionIcon}}">{{icon}}</ion-icon>
+      </ion-col>
+      <ion-col >
+        <h2>{{device.Name}} - {{device.Data}}</h2>
+        <p>{{device.Description}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

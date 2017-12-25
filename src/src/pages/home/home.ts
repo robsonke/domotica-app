@@ -38,8 +38,10 @@ export class HomePage implements OnInit {
     });
   }
 
-  refreshDevices(): void {
-    this.domoticzMqttService.refreshInitialData();
+  refreshDevices($event?: any): void {
+    if($event)
+      this.domoticzMqttService.refreshInitialData($event.complete.bind($event));
+    else this.domoticzMqttService.refreshInitialData();
   }
 
   ngOnInit() {

@@ -1,0 +1,27 @@
+sensor {
+  background-color: $off-color;
+
+  ion-row {
+    flex: 1;
+  }
+
+  .device-icon.disabled {
+    color: $disabled-color;
+  }
+
+  @media screen and (max-height : 700px) {
+    .device-icon {
+      font-size: 50px;
+      line-height: 70px;
+    }
+  }
+  @media screen and (min-height : 700px) {
+    .device-icon {
+      font-size: 60px;
+    }
+  }
+
+  .rotate180 {
+    transform: rotate(180deg);
+  }
+}

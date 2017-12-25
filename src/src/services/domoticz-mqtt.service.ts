@@ -44,10 +44,11 @@ export class DomoticzMqttService {
       );
   }
 
-  public refreshInitialData(): void {
+  public refreshInitialData(callback: () => void = () => {}): void {
     this.domoticzService.getDevices().subscribe(data => {
       this.allDevices = data;
       this.allDevicesSubject.next(data.map(x => Object.assign({}, x)));
+      callback();
     });
   }
 

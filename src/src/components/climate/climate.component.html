@@ -1,0 +1,46 @@
+<div>
+  <div class="device-info">
+    <ion-row align-items-stretch>
+      <ion-col >
+        <p>
+          <ion-icon [ngClass]="{heating: heatingDevice.Data === 'On'}" class="device-icon" md-name md-name="home">home</ion-icon>
+          Woonkamer: {{nestTempLivingRoomDevice.Data | nestDataFilter}}, gang: {{tempHallDevice.Data}}
+        </p>
+        <hr/>
+        <p>
+          <ion-icon class="device-icon" name="cloud"></ion-icon>
+          Buiten: {{outsideDevice.Data}}, {{outsideWeatherDevice.ForecastStr}}
+        </p>
+        <hr/>
+        <p>
+          <ion-icon class="device-icon" name="eye"></ion-icon>
+          Zicht: {{visibilityDevice.Data}}
+        </p>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row align-items-start>
+          <ion-col col-12><button ion-button icon-only (click)="updateNestTemperature(0.5)" color="danger"><ion-icon name="arrow-up"></ion-icon></button></ion-col>
+          <ion-col  col-12>{{nestSetTempDevice.Data}} <ion-icon class="device-icon" name="thermometer"></ion-icon></ion-col>
+          <ion-col col-12><button ion-button icon-only (click)="updateNestTemperature(-0.5)"><ion-icon name="arrow-down"></ion-icon></button></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row *ngIf="device.SwitchType === 'Dimmer' && isDeviceOn()">
+      <ion-col col-12>
+        <ion-item>
+          <ion-range debounce="700" min="0" max="100" pin="true" [(ngModel)]="device.Level" (ionBlur)="setLevel($event)"></ion-range>
+        </ion-item>
+      </ion-col>
+    </ion-row> -->
+  </div>
+</div>
+
+
+<!-- nest temp, real temp, temp gang -->
+<!-- adjust temp option -->
+<!-- idx 80 = are we heating? -->
+
+<!-- <iframe src="https://gadgets.buienradar.nl/gadget/zoommap/?lat=51.51143&lng=3.90832&overname=2&zoom=11&naam=4464AK&size=2&voor=1" scrolling=no width=256 height=256 frameborder=no></iframe>
+<IFRAME SRC="https://gadgets.buienradar.nl/gadget/weathersymbol" NORESIZE SCROLLING=NO HSPACE=0 VSPACE=0 FRAMEBORDER=0 MARGINHEIGHT=0 MARGINWIDTH=0 WIDTH=50 HEIGHT=40></IFRAME>
+<iframe src="//gadgets.buienradar.nl/gadget/forecastandstation/6323/" noresize scrolling=no hspace=0 vspace=0 frameborder=0 marginheight=0 marginwidth=0 width=300 height=190></iframe>
+https://api.buienradar.nl/data/public/1.1/jsonfeed -->

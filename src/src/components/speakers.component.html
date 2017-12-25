@@ -1,0 +1,38 @@
+<div *ngIf="speakers">
+  <div class="speaker-info">
+    <ion-row>
+      <ion-col col-2>
+        <ion-icon class="speaker-icon" md-name md-name="speaker_group">speaker_group</ion-icon>
+      </ion-col>
+      <ion-col >
+        <h2>Speakers selectie</h2>
+        <p>Kies de speakers waaruit muziek moet komen.</p>
+      </ion-col>
+      <ion-col col-1>
+        <ion-row justify-content-center>
+          <ion-col col-12>
+            <button full clear ion-button icon-only (click)="volumeUp(5)">
+              <ion-icon range-left md-name md-name="volume_up"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-12>
+            <ion-badge style="width:100%" item-end>{{volumeStatus?.level}} %</ion-badge>
+          </ion-col>
+          <ion-col col-12>
+            <button full clear ion-button icon-only (click)="volumeDown(-5)">
+              <ion-icon small range-left md-name md-name="volume_down"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button small (click)="updateSpeakerStatus(speaker)" [color]="speaker.connected != 'true' ? 'dark' : ''" *ngFor="let speaker of speakers" ion-button icon-start>
+          <ion-icon md-name md-name="check" *ngIf="speaker.connected == 'true'"></ion-icon>
+          {{speaker.name}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

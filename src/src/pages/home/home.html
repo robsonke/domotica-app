@@ -3,14 +3,9 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <!-- <ion-segment [(ngModel)]="segment" (ionChange)="updateOverview()">
-      <ion-segment-button value="all">
-        All
-      </ion-segment-button>
-      <ion-segment-button value="lights">
-        Lights
-      </ion-segment-button>
-    </ion-segment> -->
+    <ion-toolbar>
+      <ion-title>Home</ion-title>
+    </ion-toolbar>
     <ion-buttons right>
       <button ion-button (click)="refreshDevices()">
         <ion-icon name="refresh"></ion-icon>
@@ -20,53 +15,71 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher #$event (ionRefresh)="refreshDevices($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col col-12 col-sm>
         <div class="tile">
-          <device [device]=(data|async|deviceFilter:115)></device>
+          <!-- automatische lampen switch -->
+          <device [device]=(data|async|deviceFilter:53) icon="check_circle"></device>
         </div>
       </ion-col>
-      <ion-col>
+      <ion-col col-12 col-sm>
         <div class="tile">
           <!-- lamp stoel -->
-          <device [device]=(data|async|deviceFilter:128)></device>
+          <device [device]=(data|async|deviceFilter:128) icon="lightbulb_outline"></device>
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col>
-          <div class="tile">
-            <!-- automatische lampen switch -->
-            <device [device]=(data|async|deviceFilter:53)></device>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="tile">
-            <!-- lamp stoel -->
-            <device [device]=(data|async|deviceFilter:111)></device>
-          </div>
-        </ion-col>
-      </ion-row>
-    <ion-row>
-      <ion-col>
+      <ion-col col-12 col-sm>
         <div class="tile">
-          <device [device]=(data|async|deviceFilter:11)></device>
+          <!-- milight bridge -->
+          <device [device]=(data|async|deviceFilter:115) icon="lightbulb_outline"></device>
+        </div>
+      </ion-col>
+      <ion-col col-12 col-sm>
+        <div class="tile">
+          <!-- spots achterdeur -->
+          <device [device]=(data|async|deviceFilter:111) icon="highlight" rotateIcon="180"></device>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row><ion-col col-12><h1 text-center>Gegevens</h1></ion-col></ion-row>
+    <ion-row>
+      <ion-col col-6 col-sm>
+        <div class="tile">
+          <!-- light sensor living -->
+          <sensor [device]=(data|async|deviceFilter:3) icon="wb_sunny"></sensor>
+        </div>
+      </ion-col>
+      <ion-col col-6 col-sm>
+        <div class="tile">
+          <!-- light sensor desk -->
+          <sensor [device]=(data|async|deviceFilter:144) icon="wb_sunny"></sensor>
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col col-6 col-sm>
         <div class="tile">
-          Music
+          <!-- temperature settings inside -->
+          <climate [nestSetTempDevice]=(data|async|deviceFilter:78)
+            [nestTempLivingRoomDevice]=(data|async|deviceFilter:79)
+            [tempHallDevice]=(data|async|deviceFilter:65)
+            [heatingDevice]=(data|async|deviceFilter:80)
+            [outsideDevice]=(data|async|deviceFilter:45)
+            [visibilityDevice]=(data|async|deviceFilter:44)
+            [outsideWeatherDevice]=(data|async|deviceFilter:40)>
+          </climate>
         </div>
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
+      <ion-col col-6 col-sm>
         <div class="tile">
-          Weer
+          <!-- weather outside -->
+          <!-- <weather [device]=(data|async|deviceFilter:144) ionIcon="ios-thermometer"></weather> -->
         </div>
       </ion-col>
     </ion-row>

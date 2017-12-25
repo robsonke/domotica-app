@@ -1,10 +1,21 @@
-<div [class]="getStateClass()">
-  <h2>name: {{device.Name}}</h2>
-  <p>idx: {{device.idx}}</p>
-  <p>switch type: {{device.SwitchType}}</p>
-  <p>data: {{device.Data}}</p>
-  <p>type: {{device.Type}}</p>
-  <p>status: {{device.Status}}</p>
-  <p>level: {{device.Level}}</p>
-  <button ion-button color="light" outline (click)="changeState()">{{ device.Status == 'On' ? 'Zet uit' : 'Zet aan' }}</button>
+<div *ngIf="device" id="{{device.idx}}" [class]="getStateClass()">
+  <div *ngIf="device.SwitchType === 'Dimmer' && isDeviceOn()"><div class="level-bar" [style]="getLevelStyle()"></div></div>
+  <div class="device-info">
+    <ion-row align-items-stretch (click)="changeState()">
+      <ion-col col-2>
+        <ion-icon [ngClass]="{disabled: device.Data === 'Off', rotate180: rotateIcon == 180}" class="device-icon" md-name md-name="{{icon}}">{{icon}}</ion-icon>
+      </ion-col>
+      <ion-col >
+        <h2>{{device.Name}}</h2>
+        <p>{{device.Description}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="device.SwitchType === 'Dimmer' && isDeviceOn()">
+      <ion-col col-12>
+        <ion-item>
+          <ion-range debounce="700" min="0" max="100" pin="true" [(ngModel)]="device.Level" (ionBlur)="setLevel($event)"></ion-range>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
 </div>
